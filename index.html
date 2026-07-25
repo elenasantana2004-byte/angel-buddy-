@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angel Buddy — Tu asistente de negocio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">Angel <strong>Buddy</strong></span>
+      </div>
+      <nav class="nav">
+        <a href="#areas" class="nav-link">Áreas de negocio</a>
+        <a href="#feed" class="nav-link">Recursos</a>
+        <button class="btn-primary" id="btn-start">Comenzar →</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="avatar-wrap">
+        <div class="avatar">AB</div>
+        <span class="avatar-badge">● En línea</span>
+      </div>
+      <h1 class="hero-title">Hola, soy <span class="accent">Angel Buddy</span> 👋</h1>
+      <p class="hero-sub">
+        Tu guía personal para emprender con confianza. Estoy aquí para ayudarte a
+        gestionar cada área de tu negocio, paso a paso, sin jerga complicada.
+      </p>
+      <div class="hero-cta">
+        <button class="btn-primary btn-lg" id="btn-chat">Empezar conversación</button>
+        <button class="btn-ghost btn-lg" id="btn-explore">Explorar recursos</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="areas" id="areas">
+    <div class="section-inner">
+      <h2 class="section-title">¿En qué te puedo ayudar hoy?</h2>
+      <p class="section-sub">Selecciona el área que más necesitas trabajar ahora mismo.</p>
+      <div class="areas-grid">
+
+        <button class="area-card" data-area="marketing">
+          <span class="area-icon">📣</span>
+          <h3>Marketing</h3>
+          <p>Atrae clientes, construye tu marca y comunica tu propuesta de valor.</p>
+          <span class="area-link">Explorar →</span>
+        </button>
+
+        <button class="area-card" data-area="finanzas">
+          <span class="area-icon">💰</span>
+          <h3>Finanzas</h3>
+          <p>Controla tus ingresos, gastos y mantén la salud financiera de tu negocio.</p>
+          <span class="area-link">Explorar →</span>
+        </button>
+
+        <button class="area-card" data-area="ventas">
+          <span class="area-icon">🤝</span>
+          <h3>Ventas</h3>
+          <p>Cierra más tratos, entiende a tus clientes y mejora tu proceso comercial.</p>
+          <span class="area-link">Explorar →</span>
+        </button>
+
+        <button class="area-card" data-area="operaciones">
+          <span class="area-icon">⚙️</span>
+          <h3>Operaciones</h3>
+          <p>Organiza tus procesos internos para que tu negocio funcione sin fricción.</p>
+          <span class="area-link">Explorar →</span>
+        </button>
+
+        <button class="area-card" data-area="personas">
+          <span class="area-icon">👥</span>
+          <h3>Personas &amp; RRHH</h3>
+          <p>Construye y lidera un equipo comprometido desde el primer colaborador.</p>
+          <span class="area-link">Explorar →</span>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="feed" id="feed">
+    <div class="section-inner">
+      <h2 class="section-title">Recursos &amp; Noticias</h2>
+      <p class="section-sub">Lo que todo emprendedor debería leer esta semana.</p>
+      <div class="feed-grid">
+        <article class="feed-card">
+          <span class="feed-tag orange">Finanzas</span>
+          <h4>5 métricas financieras que todo emprendedor debe conocer</h4>
+          <p>Aprende a leer los números de tu negocio sin necesidad de ser contador.</p>
+          <p class="feed-meta">Lectura 4 min · Finanzas básicas</p>
+        </article>
+        <article class="feed-card">
+          <span class="feed-tag">Marketing</span>
+          <h4>Cómo construir una propuesta de valor en una frase</h4>
+          <p>Una propuesta clara atrae al cliente correcto desde el primer momento.</p>
+          <p class="feed-meta">Lectura 3 min · Branding</p>
+        </article>
+        <article class="feed-card">
+          <span class="feed-tag orange">Ventas</span>
+          <h4>El guión de ventas que no suena a guión</h4>
+          <p>Conversaciones naturales que convierten mejor que cualquier script rígido.</p>
+          <p class="feed-meta">Lectura 5 min · Técnicas comerciales</p>
+        </article>
+        <article class="feed-card">
+          <span class="feed-tag">Operaciones</span>
+          <h4>Automatiza tu negocio con herramientas gratuitas</h4>
+          <p>Desde tareas repetitivas hasta atención al cliente: tu guía de automatización.</p>
+          <p class="feed-meta">Lectura 6 min · Productividad</p>
+        </article>
+        <article class="feed-card">
+          <span class="feed-tag orange">Personas</span>
+          <h4>Tu primer contrato: qué hacer antes de contratar a alguien</h4>
+          <p>Evita los errores más comunes al incorporar al primer colaborador.</p>
+          <p class="feed-meta">Lectura 4 min · RRHH básico</p>
+        </article>
+        <article class="feed-card">
+          <span class="feed-tag">Marketing</span>
+          <h4>Redes sociales para negocios: empezar bien desde el principio</h4>
+          <p>Cuál plataforma elegir, qué publicar y con qué frecuencia: guía práctica.</p>
+          <p class="feed-meta">Lectura 5 min · Redes sociales</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Chat con Angel Buddy">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+      <div class="modal-header">
+        <div class="avatar avatar-sm">AB</div>
+        <div>
+          <p class="modal-name">Angel Buddy</p>
+          <p class="modal-status">● En línea</p>
+        </div>
+      </div>
+      <div class="chat-messages" id="chat-messages"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" class="chat-input"
+               placeholder="Escribe tu respuesta…" autocomplete="off" />
+        <button class="btn-send" id="btn-send" aria-label="Enviar">↑</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Angel Buddy &copy; 2025 — Tu compañero de emprendimiento</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
