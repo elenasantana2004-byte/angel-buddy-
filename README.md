@@ -34,7 +34,7 @@ July Challenge — Reimagine Creative Industries with AI
 
 ## IBM SkillsBuild Completion
 Completed: **Lab: Troubleshoot Your Code Using IBM Bob** (IBM SkillsBuild), June 28, 2026.
-Credential link: [add your certificate link here]
+Credential link: https://skills.yourlearning.ibm.com/certificate/share/fff3df419eewogICJsZWFybmVyQ05VTSIgOiAiODEyMzg5MFJFRyIsCiAgIm9iamVjdFR5cGUiIDogIkFDVElWSVRZIiwKICAib2JqZWN0SWQiIDogIkFMTS1DT1VSU0VfNDA3MTMwNyIKfQ7bcb50530a-10
 
 ## Future Improvements
 - Connect a real AI API (IBM Granite/watsonx) for dynamic chat responses
