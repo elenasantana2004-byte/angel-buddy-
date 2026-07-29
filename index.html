@@ -16,7 +16,9 @@
       </div>
       <nav class="nav">
         <a href="#areas" class="nav-link">Áreas de negocio</a>
-        <a href="#feed" class="nav-link">Recursos</a>
+        <a href="#errores" class="nav-link">Errores comunes</a>
+        <a href="#recursos-hub" class="nav-link">Fuentes</a>
+        <a href="#feed" class="nav-link">Noticias</a>
         <button class="btn-primary" id="btn-start">Comenzar →</button>
       </nav>
     </div>
@@ -85,46 +87,149 @@
     </div>
   </section>
 
+  <!-- ERRORES COMUNES -->
+  <section class="mistakes" id="errores">
+    <div class="section-inner">
+      <h2 class="section-title">Errores más comunes del emprendedor en España</h2>
+      <p class="section-sub">Conocerlos es el primer paso para no repetirlos. Haz clic en cada uno para entenderlo mejor.</p>
+      <div class="mistakes-grid">
+
+        <button class="mistake-card" data-mistake="0">
+          <span class="mistake-num">01</span>
+          <span class="mistake-icon">💸</span>
+          <h4>Empezar sin validar</h4>
+          <p>Invertir tiempo y dinero antes de confirmar que alguien pagaría por el producto.</p>
+        </button>
+
+        <button class="mistake-card" data-mistake="1">
+          <span class="mistake-num">02</span>
+          <span class="mistake-icon">🎯</span>
+          <h4>No tener cliente definido</h4>
+          <p>Intentar venderle a todo el mundo y no llegar a nadie en concreto.</p>
+        </button>
+
+        <button class="mistake-card" data-mistake="2">
+          <span class="mistake-num">03</span>
+          <span class="mistake-icon">🧾</span>
+          <h4>Mezclar finanzas personales y del negocio</h4>
+          <p>Usar la misma cuenta para todo hace imposible saber si el negocio es rentable.</p>
+        </button>
+
+        <button class="mistake-card" data-mistake="3">
+          <span class="mistake-num">04</span>
+          <span class="mistake-icon">📉</span>
+          <h4>Cobrar demasiado poco</h4>
+          <p>Fijar precios bajos para competir termina atrayendo malos clientes y quemando al emprendedor.</p>
+        </button>
+
+        <button class="mistake-card" data-mistake="4">
+          <span class="mistake-num">05</span>
+          <span class="mistake-icon">⚖️</span>
+          <h4>Ignorar lo legal y fiscal</h4>
+          <p>No darse de alta, no entender el IVA o el IRPF puede traer sanciones y sorpresas muy caras.</p>
+        </button>
+
+        <button class="mistake-card" data-mistake="5">
+          <span class="mistake-num">06</span>
+          <span class="mistake-icon">🔇</span>
+          <h4>No hacer marketing hasta que "esté todo listo"</h4>
+          <p>Esperar la perfección antes de comunicar retrasa la captación de clientes meses o años.</p>
+        </button>
+
+        <button class="mistake-card" data-mistake="6">
+          <span class="mistake-num">07</span>
+          <span class="mistake-icon">🏝️</span>
+          <h4>Trabajar en soledad</h4>
+          <p>Sin red de apoyo, mentores ni comunidad, los problemas se hacen mucho más difíciles de resolver.</p>
+        </button>
+
+        <button class="mistake-card" data-mistake="7">
+          <span class="mistake-num">08</span>
+          <span class="mistake-icon">📋</span>
+          <h4>No documentar procesos</h4>
+          <p>Tener todo en la cabeza impide delegar y hace al negocio completamente dependiente de una sola persona.</p>
+        </button>
+
+        <button class="mistake-card" data-mistake="8">
+          <span class="mistake-num">09</span>
+          <span class="mistake-icon">🔁</span>
+          <h4>Rendirse demasiado pronto</h4>
+          <p>Abandonar antes de que el negocio tenga tiempo real de arrancar, confundiendo la curva normal de aprendizaje con el fracaso.</p>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RECURSOS HUB -->
+  <section class="resources-hub" id="recursos-hub">
+    <div class="section-inner">
+      <h2 class="section-title">Fuentes para estar siempre al día</h2>
+      <p class="section-sub">Las mejores fuentes de negocios, startups, marketing, finanzas, liderazgo y tecnología. Españolas e internacionales.</p>
+
+      <!-- Filter tabs -->
+      <div class="res-tabs" id="res-tabs">
+        <button class="res-tab active" data-cat="all">Todas</button>
+        <button class="res-tab" data-cat="prensa">Prensa &amp; Revistas</button>
+        <button class="res-tab" data-cat="blogs">Blogs &amp; Newsletters</button>
+        <button class="res-tab" data-cat="podcasts">Podcasts</button>
+        <button class="res-tab" data-cat="video">YouTube &amp; Vídeo</button>
+        <button class="res-tab" data-cat="comunidad">Foros &amp; Comunidades</button>
+        <button class="res-tab" data-cat="herramientas">Herramientas de tendencias</button>
+      </div>
+
+      <div class="res-grid" id="res-grid">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
   <section class="feed" id="feed">
     <div class="section-inner">
       <h2 class="section-title">Recursos &amp; Noticias</h2>
       <p class="section-sub">Lo que todo emprendedor debería leer esta semana.</p>
       <div class="feed-grid">
-        <article class="feed-card">
+        <article class="feed-card" data-article="0" role="button" tabindex="0">
           <span class="feed-tag orange">Finanzas</span>
           <h4>5 métricas financieras que todo emprendedor debe conocer</h4>
           <p>Aprende a leer los números de tu negocio sin necesidad de ser contador.</p>
           <p class="feed-meta">Lectura 4 min · Finanzas básicas</p>
+          <span class="feed-read">Leer →</span>
         </article>
-        <article class="feed-card">
+        <article class="feed-card" data-article="1" role="button" tabindex="0">
           <span class="feed-tag">Marketing</span>
           <h4>Cómo construir una propuesta de valor en una frase</h4>
           <p>Una propuesta clara atrae al cliente correcto desde el primer momento.</p>
           <p class="feed-meta">Lectura 3 min · Branding</p>
+          <span class="feed-read">Leer →</span>
         </article>
-        <article class="feed-card">
+        <article class="feed-card" data-article="2" role="button" tabindex="0">
           <span class="feed-tag orange">Ventas</span>
           <h4>El guión de ventas que no suena a guión</h4>
           <p>Conversaciones naturales que convierten mejor que cualquier script rígido.</p>
           <p class="feed-meta">Lectura 5 min · Técnicas comerciales</p>
+          <span class="feed-read">Leer →</span>
         </article>
-        <article class="feed-card">
+        <article class="feed-card" data-article="3" role="button" tabindex="0">
           <span class="feed-tag">Operaciones</span>
           <h4>Automatiza tu negocio con herramientas gratuitas</h4>
           <p>Desde tareas repetitivas hasta atención al cliente: tu guía de automatización.</p>
           <p class="feed-meta">Lectura 6 min · Productividad</p>
+          <span class="feed-read">Leer →</span>
         </article>
-        <article class="feed-card">
+        <article class="feed-card" data-article="4" role="button" tabindex="0">
           <span class="feed-tag orange">Personas</span>
           <h4>Tu primer contrato: qué hacer antes de contratar a alguien</h4>
           <p>Evita los errores más comunes al incorporar al primer colaborador.</p>
           <p class="feed-meta">Lectura 4 min · RRHH básico</p>
+          <span class="feed-read">Leer →</span>
         </article>
-        <article class="feed-card">
+        <article class="feed-card" data-article="5" role="button" tabindex="0">
           <span class="feed-tag">Marketing</span>
           <h4>Redes sociales para negocios: empezar bien desde el principio</h4>
           <p>Cuál plataforma elegir, qué publicar y con qué frecuencia: guía práctica.</p>
           <p class="feed-meta">Lectura 5 min · Redes sociales</p>
+          <span class="feed-read">Leer →</span>
         </article>
       </div>
     </div>
@@ -146,6 +251,22 @@
                placeholder="Escribe tu respuesta…" autocomplete="off" />
         <button class="btn-send" id="btn-send" aria-label="Enviar">↑</button>
       </div>
+    </div>
+  </div>
+
+  <!-- MISTAKE MODAL -->
+  <div class="modal-overlay" id="mistake-modal" role="dialog" aria-modal="true" aria-label="Error común">
+    <div class="modal article-modal-inner">
+      <button class="modal-close" id="mistake-close" aria-label="Cerrar">✕</button>
+      <div class="article-content" id="mistake-content"></div>
+    </div>
+  </div>
+
+  <!-- ARTICLE MODAL -->
+  <div class="modal-overlay" id="article-modal" role="dialog" aria-modal="true" aria-label="Artículo">
+    <div class="modal article-modal-inner">
+      <button class="modal-close" id="article-close" aria-label="Cerrar">✕</button>
+      <div class="article-content" id="article-content"></div>
     </div>
   </div>
 

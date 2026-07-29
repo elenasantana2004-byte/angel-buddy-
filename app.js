@@ -412,6 +412,350 @@ function handleSend() {
   appendMessage("bot", reply, 700);
 }
 
+// ── RESOURCES HUB ──────────────────────────────────────────
+var RESOURCES = [
+
+  // ── PRENSA & REVISTAS ────────────────────────────────────
+  { cat:"prensa", emoji:"📰", name:"Expansión",        lang:"es", free:true,
+    desc:"El diario de referencia para economía y empresa en España. Imprescindible para seguir mercados, estrategia empresarial y noticias de pymes.",
+    url:"https://www.expansion.com" },
+  { cat:"prensa", emoji:"📰", name:"El Economista",     lang:"es", free:true,
+    desc:"Cobertura diaria de economía, startups y empresas españolas. Muy útil para seguir el ecosistema emprendedor nacional.",
+    url:"https://www.eleconomista.es" },
+  { cat:"prensa", emoji:"📰", name:"Emprendedores",     lang:"es", free:true,
+    desc:"La revista española especializada en emprendimiento por excelencia. Casos de éxito, guías prácticas y tendencias del ecosistema pyme.",
+    url:"https://www.emprendedores.es" },
+  { cat:"prensa", emoji:"📰", name:"Harvard Business Review",  lang:"en", free:false,
+    desc:"La publicación académica más influyente del mundo en gestión empresarial. Sus artículos son densos pero de altísima calidad sobre liderazgo, estrategia y management.",
+    url:"https://hbr.org" },
+  { cat:"prensa", emoji:"📰", name:"Forbes",            lang:"en", free:true,
+    desc:"Referencia global para emprendedores y empresarios. Listas de empresas, perfiles de fundadores y tendencias de negocio internacionales.",
+    url:"https://www.forbes.com" },
+  { cat:"prensa", emoji:"📰", name:"Inc. Magazine",     lang:"en", free:true,
+    desc:"Centrada en startups y empresas en crecimiento. Muy práctica: tácticas reales de fundadores que ya han pasado por lo que tú estás viviendo.",
+    url:"https://www.inc.com" },
+  { cat:"prensa", emoji:"📰", name:"Fast Company",      lang:"en", free:true,
+    desc:"Innovación, tecnología y negocios creativos. Ideal para emprendedores que quieren entender las tendencias antes de que sean mainstream.",
+    url:"https://www.fastcompany.com" },
+  { cat:"prensa", emoji:"📰", name:"TechCrunch",        lang:"en", free:true,
+    desc:"El medio de referencia para startups tecnológicas, rondas de inversión y análisis del ecosistema global de venture capital.",
+    url:"https://techcrunch.com" },
+  { cat:"prensa", emoji:"📰", name:"MIT Technology Review", lang:"en", free:false,
+    desc:"La mejor fuente para entender cómo la tecnología (IA, biotech, energía) va a transformar los negocios. Rigor técnico sin perder accesibilidad.",
+    url:"https://www.technologyreview.com" },
+
+  // ── BLOGS & NEWSLETTERS ──────────────────────────────────
+  { cat:"blogs", emoji:"✉️", name:"Startupeable",       lang:"es", free:true,
+    desc:"La newsletter de referencia del ecosistema startup latinoamericano y español. Análisis semanales de modelos de negocio y rondas de financiación.",
+    url:"https://startupeable.com" },
+  { cat:"blogs", emoji:"✉️", name:"Finanzas para Mortales", lang:"es", free:true,
+    desc:"Finanzas personales y empresariales explicadas sin jerga. Ideal para emprendedores que quieren entender los números de su negocio.",
+    url:"https://finanzasparamortales.es" },
+  { cat:"blogs", emoji:"✉️", name:"Marketing de Guerrilla", lang:"es", free:true,
+    desc:"Blog veterano del marketing digital en español. Práctico, directo y actualizado con tácticas que funcionan para negocios pequeños.",
+    url:"https://www.marketingdeguerrilla.es" },
+  { cat:"blogs", emoji:"✉️", name:"Paul Graham Essays",  lang:"en", free:true,
+    desc:"El cofundador de Y Combinator escribe ensayos que han cambiado la forma de pensar el emprendimiento. Cada uno es una clase magistral.",
+    url:"https://paulgraham.com/articles.html" },
+  { cat:"blogs", emoji:"✉️", name:"Seth Godin's Blog",  lang:"en", free:true,
+    desc:"El gurú del marketing publica todos los días. Posts cortos pero densos en ideas sobre liderazgo, marketing y cómo crear algo que importe.",
+    url:"https://seths.blog" },
+  { cat:"blogs", emoji:"✉️", name:"The Hustle",         lang:"en", free:true,
+    desc:"Newsletter diaria de negocios y tecnología con un estilo fresco y sin la solemnidad de los medios tradicionales. Muy recomendable para desayunar.",
+    url:"https://thehustle.co" },
+  { cat:"blogs", emoji:"✉️", name:"Morning Brew",       lang:"en", free:true,
+    desc:"El boletín de negocios más leído de EEUU. Económica y empresarialmente relevante, con un tono ligero que hace amena la actualidad.",
+    url:"https://www.morningbrew.com" },
+  { cat:"blogs", emoji:"✉️", name:"Stratechery",        lang:"en", free:false,
+    desc:"Ben Thompson analiza estrategia de negocios tecnológicos con una profundidad que no encontrarás en ningún otro lugar. Vale cada euro de la suscripción.",
+    url:"https://stratechery.com" },
+  { cat:"blogs", emoji:"✉️", name:"Lenny's Newsletter", lang:"en", free:true,
+    desc:"La newsletter más seguida sobre product management, growth y startups. Casos prácticos de cómo construyen sus productos las mejores empresas.",
+    url:"https://www.lennysnewsletter.com" },
+  { cat:"blogs", emoji:"✉️", name:"Not Boring",         lang:"en", free:true,
+    desc:"Packy McCormick analiza startups, modelos de negocio y tecnología con profundidad y humor. Una de las newsletters más originales del ecosistema.",
+    url:"https://www.notboring.co" },
+
+  // ── PODCASTS ─────────────────────────────────────────────
+  { cat:"podcasts", emoji:"🎙️", name:"Mentores Hoy",    lang:"es", free:true,
+    desc:"Entrevistas a emprendedores y directivos españoles. Muy útil para escuchar historias reales del ecosistema empresarial nacional.",
+    url:"https://open.spotify.com/show/mentoreshoy" },
+  { cat:"podcasts", emoji:"🎙️", name:"Libros para Emprendedores", lang:"es", free:true,
+    desc:"Luis Ramos resume los mejores libros de negocios en formato audio. Perfecto para emprendedores que quieren aprender sin tiempo para leer.",
+    url:"https://librosparaemprendedores.net" },
+  { cat:"podcasts", emoji:"🎙️", name:"Negocio y Nada Más", lang:"es", free:true,
+    desc:"El podcast más directo sobre estrategia de negocio en español. Sin rodeos, solo tácticas y conceptos aplicables desde el día siguiente.",
+    url:"https://www.ivoox.com/podcast-negocio-nada-mas" },
+  { cat:"podcasts", emoji:"🎙️", name:"How I Built This", lang:"en", free:true,
+    desc:"Guy Raz entrevista a los fundadores de las empresas más grandes del mundo. Las historias son honestas, incluyen los fracasos, y son tremendamente inspiradoras.",
+    url:"https://www.npr.org/podcasts/510313/how-i-built-this" },
+  { cat:"podcasts", emoji:"🎙️", name:"Masters of Scale", lang:"en", free:true,
+    desc:"Reid Hoffman (fundador de LinkedIn) entrevista a fundadores sobre cómo escalar empresas. Teorías contraintuitivas sobre crecimiento y estrategia.",
+    url:"https://mastersofscale.com" },
+  { cat:"podcasts", emoji:"🎙️", name:"My First Million",lang:"en", free:true,
+    desc:"Sam Parr y Shaan Puri generan ideas de negocio en tiempo real. Muy entretenido y lleno de conceptos de monetización y validación.",
+    url:"https://www.mfmpod.com" },
+  { cat:"podcasts", emoji:"🎙️", name:"The Tim Ferriss Show", lang:"en", free:true,
+    desc:"Entrevistas largas a los mejores del mundo en negocios, deportes y ciencia. Siempre hay táctica accionable que puedes aplicar en tu negocio.",
+    url:"https://tim.blog/podcast" },
+  { cat:"podcasts", emoji:"🎙️", name:"Acquired",        lang:"en", free:true,
+    desc:"Análisis en profundidad de las empresas más importantes del mundo (Apple, NVIDIA, Berkshire...). Cada episodio es una clase de estrategia empresarial.",
+    url:"https://www.acquired.fm" },
+  { cat:"podcasts", emoji:"🎙️", name:"Lex Fridman Podcast", lang:"en", free:true,
+    desc:"Conversaciones largas con los mejores científicos, tecnólogos y emprendedores. Imprescindible para entender el futuro de la IA y la tecnología.",
+    url:"https://lexfridman.com/podcast" },
+
+  // ── YOUTUBE & VÍDEO ──────────────────────────────────────
+  { cat:"video", emoji:"▶️", name:"Isra Bravo",         lang:"es", free:true,
+    desc:"El copywriter más influyente en español. Sus vídeos sobre ventas y comunicación son directos, sin humo y aplicables inmediatamente.",
+    url:"https://www.youtube.com/@israbravo" },
+  { cat:"video", emoji:"▶️", name:"Vilma Núñez",        lang:"es", free:true,
+    desc:"Marketing digital y negocios online en español. Tutoriales muy prácticos sobre redes sociales, estrategia de contenidos y herramientas digitales.",
+    url:"https://www.youtube.com/@vilmanunezconsultora" },
+  { cat:"video", emoji:"▶️", name:"Emilio Duró",        lang:"es", free:true,
+    desc:"Sus conferencias sobre actitud, liderazgo y empresa son de las más vistas en español. Mezcla humor con ideas empresariales de alto impacto.",
+    url:"https://www.youtube.com/results?search_query=emilio+duro+conferencia" },
+  { cat:"video", emoji:"▶️", name:"Y Combinator",       lang:"en", free:true,
+    desc:"La aceleradora más importante del mundo publica sus clases de Startup School gratuitamente. Imprescindible para cualquier fundador.",
+    url:"https://www.youtube.com/@ycombinator" },
+  { cat:"video", emoji:"▶️", name:"Alex Hormozi",       lang:"en", free:true,
+    desc:"El emprendedor más seguido actualmente en inglés sobre negocios. Contenido muy denso sobre ventas, ofertas y cómo escalar un negocio de servicios.",
+    url:"https://www.youtube.com/@AlexHormozi" },
+  { cat:"video", emoji:"▶️", name:"Patrick Boyle",      lang:"en", free:true,
+    desc:"Finanzas, inversión y economía explicadas con rigor académico y humor seco. Ideal para entender los mercados financieros sin ser economista.",
+    url:"https://www.youtube.com/@PBoyle" },
+  { cat:"video", emoji:"▶️", name:"Simon Sinek",        lang:"en", free:true,
+    desc:"Liderazgo, propósito y cultura empresarial. Su charla TED Start With Why es el mejor punto de partida para cualquier emprendedor.",
+    url:"https://www.youtube.com/@SimonSinek" },
+  { cat:"video", emoji:"▶️", name:"TED Business",       lang:"en", free:true,
+    desc:"Las charlas TED seleccionadas específicamente sobre negocios, innovación y liderazgo. 15-20 minutos por idea que pueden cambiar tu perspectiva.",
+    url:"https://www.youtube.com/@TED" },
+
+  // ── FOROS & COMUNIDADES ───────────────────────────────────
+  { cat:"comunidad", emoji:"💬", name:"Forocoches (Economía)", lang:"es", free:true,
+    desc:"A pesar de su reputación, el subforo de economía tiene hilos muy útiles sobre fiscalidad de autónomos, inversión y experiencias reales de emprendedores.",
+    url:"https://www.forocoches.com/foro/forumdisplay.php?f=32" },
+  { cat:"comunidad", emoji:"💬", name:"Reddit r/entrepreneur", lang:"en", free:true,
+    desc:"La comunidad de emprendedores más grande en inglés. Preguntas reales, respuestas honestas y experiencias de fundadores en todas las etapas.",
+    url:"https://www.reddit.com/r/entrepreneur" },
+  { cat:"comunidad", emoji:"💬", name:"Reddit r/smallbusiness", lang:"en", free:true,
+    desc:"Específico para negocios pequeños. Fiscalidad, clientes difíciles, pricing, marketing local: problemas del día a día resueltos por quien ya los vivió.",
+    url:"https://www.reddit.com/r/smallbusiness" },
+  { cat:"comunidad", emoji:"💬", name:"Hacker News",    lang:"en", free:true,
+    desc:"La comunidad de Y Combinator. Tecnología, startups y emprendimiento al más alto nivel de debate. Imprescindible para estar al día en tech.",
+    url:"https://news.ycombinator.com" },
+  { cat:"comunidad", emoji:"💬", name:"Indie Hackers",  lang:"en", free:true,
+    desc:"La comunidad de fundadores bootstrapped (sin inversión). Comparten ingresos reales, estrategias y fracasos con una transparencia poco habitual.",
+    url:"https://www.indiehackers.com" },
+  { cat:"comunidad", emoji:"💬", name:"Product Hunt",   lang:"en", free:true,
+    desc:"Donde se lanzan los nuevos productos digitales cada día. Útil tanto para descubrir herramientas como para lanzar tu propio producto.",
+    url:"https://www.producthunt.com" },
+  { cat:"comunidad", emoji:"💬", name:"LinkedIn (grupos)", lang:"en", free:true,
+    desc:"Los grupos de LinkedIn son subestimados. Busca grupos activos de tu sector: son comunidades de profesionales donde se generan oportunidades reales.",
+    url:"https://www.linkedin.com" },
+
+  // ── HERRAMIENTAS DE TENDENCIAS ────────────────────────────
+  { cat:"herramientas", emoji:"🛠️", name:"Google Trends",    lang:"en", free:true,
+    desc:"Descubre qué está buscando la gente en tiempo real. Ideal para validar ideas, encontrar nichos y entender la estacionalidad de tu mercado.",
+    url:"https://trends.google.com" },
+  { cat:"herramientas", emoji:"🛠️", name:"Exploding Topics", lang:"en", free:true,
+    desc:"Detecta tendencias antes de que se vuelvan mainstream. Perfecto para emprendedores que quieren adelantarse al mercado con nuevos productos o contenidos.",
+    url:"https://explodingtopics.com" },
+  { cat:"herramientas", emoji:"🛠️", name:"SparkToro",        lang:"en", free:true,
+    desc:"Descubre dónde pasa el tiempo online tu cliente ideal: qué medios lee, qué podcasts escucha, a quién sigue. Oro puro para estrategia de marketing.",
+    url:"https://sparktoro.com" },
+  { cat:"herramientas", emoji:"🛠️", name:"Semrush / Trends", lang:"en", free:false,
+    desc:"Más allá del SEO, su módulo de tendencias permite ver el crecimiento de sectores, comparar competidores y analizar el tráfico de cualquier web del mundo.",
+    url:"https://www.semrush.com/analytics/trends" },
+  { cat:"herramientas", emoji:"🛠️", name:"CB Insights",      lang:"en", free:false,
+    desc:"El radar del venture capital global. Tendencias de inversión, sectores emergentes y análisis de startups que están recibiendo dinero ahora mismo.",
+    url:"https://www.cbinsights.com" },
+  { cat:"herramientas", emoji:"🛠️", name:"Feedly",           lang:"en", free:true,
+    desc:"Agrega todos tus medios, blogs y newsletters en un solo lector. Con IA integrada puede resumirte lo más relevante de decenas de fuentes cada día.",
+    url:"https://feedly.com" },
+  { cat:"herramientas", emoji:"🛠️", name:"Perplexity AI",    lang:"en", free:true,
+    desc:"Motor de búsqueda con IA que cita sus fuentes. Ideal para investigar mercados, competidores o conceptos empresariales con respuestas actualizadas.",
+    url:"https://www.perplexity.ai" },
+  { cat:"herramientas", emoji:"🛠️", name:"AlphaSignals",     lang:"en", free:true,
+    desc:"Agrega señales de IA, tecnología y negocios desde Twitter/X, Reddit y medios especializados. Perfecto para estar al día en inteligencia artificial aplicada.",
+    url:"https://alphasignals.ai" }
+];
+
+function renderResources(cat) {
+  var grid = document.getElementById("res-grid");
+  if (!grid) return;
+  var html = "";
+  RESOURCES.forEach(function(r) {
+    var show = (cat === "all" || r.cat === cat);
+    var langBadge = r.lang === "es"
+      ? '<span class="res-badge es">🇪🇸 Español</span>'
+      : '<span class="res-badge en">🌐 Inglés</span>';
+    var priceBadge = r.free
+      ? '<span class="res-badge free">Gratis</span>'
+      : '<span class="res-badge paid">De pago</span>';
+    html +=
+      '<div class="res-card' + (show ? "" : " hidden") + '">' +
+        '<div class="res-card-top">' +
+          '<span class="res-emoji">' + r.emoji + '</span>' +
+          '<div class="res-badges">' + langBadge + priceBadge + '</div>' +
+        '</div>' +
+        '<h4>' + r.name + '</h4>' +
+        '<p>' + r.desc + '</p>' +
+        '<a class="res-link" href="' + r.url + '" target="_blank" rel="noopener">Visitar →</a>' +
+      '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+function initResources() {
+  var tabs = document.querySelectorAll(".res-tab");
+  if (!tabs.length) return;
+  renderResources("all");
+  tabs.forEach(function(tab) {
+    tab.addEventListener("click", function() {
+      tabs.forEach(function(t) { t.classList.remove("active"); });
+      tab.classList.add("active");
+      renderResources(tab.dataset.cat);
+    });
+  });
+}
+
+// ── MISTAKES ───────────────────────────────────────────────
+var MISTAKES = [
+  {
+    num: "01", icon: "💸",
+    title: "Empezar sin validar la idea",
+    tag: "Validación",
+    body: "<p>Uno de los errores más costosos y frecuentes en España: dedicar meses (y miles de euros) a desarrollar un producto o servicio sin haber confirmado antes que alguien estaría dispuesto a pagar por él.</p><h3>Por qué ocurre</h3><p>El emprendedor se enamora de su idea y asume que si a él le parece buena, a los demás también. La ilusión sustituye a los datos. Además, en España existe cierto miedo a compartir la idea antes de que esté «perfecta», lo que retrasa la validación.</p><h3>Las consecuencias</h3><ul><li>Inversión de tiempo y dinero en algo que el mercado no quiere</li><li>Frustración y abandono prematuro al no ver resultados</li><li>Pérdida de la ventana de oportunidad mientras se desarrolla</li></ul><h3>Cómo evitarlo</h3><p><strong>Valida antes de construir.</strong> La forma más rápida es intentar vender tu producto antes de que exista: explica la propuesta a 10 personas de tu perfil de cliente ideal y observa si intentan comprarlo. Si nadie quiere sacar la cartera, el problema no es el precio ni la comunicación: es el producto.</p><p>El objetivo de la validación no es recibir opiniones positivas («me parece interesante»), sino conseguir compromisos reales: una reserva, un pago anticipado, una firma.</p><p class='article-cta'>💡 Regla de oro: si no puedes conseguir 3 personas dispuestas a pagar antes de construir, no construyas todavía. Ajusta primero.</p>"
+  },
+  {
+    num: "02", icon: "🎯",
+    title: "No tener un cliente ideal definido",
+    tag: "Marketing",
+    body: "<p>«Mi producto es para todo el mundo» es la frase que más negocios ha hundido en España. Intentar llegar a todos implica no llegar a nadie con suficiente fuerza como para que actúen.</p><h3>Por qué ocurre</h3><p>El miedo a perder clientes potenciales lleva al emprendedor a ampliar el mensaje hasta hacerlo genérico. Paradójicamente, cuanto más específico es tu mensaje, más clientes atraes, porque hablas directamente al problema de alguien concreto.</p><h3>Las consecuencias</h3><ul><li>Mensajes de marketing vagos que no conectan con nadie</li><li>Dificultad para diferenciarse de la competencia</li><li>Clientes que no encajan bien y generan más problemas que ingresos</li></ul><h3>Cómo evitarlo</h3><p>Define a tu cliente ideal con este nivel de detalle: ¿Qué edad tiene? ¿A qué se dedica? ¿Qué le preocupa al levantarse? ¿Dónde busca información? ¿Qué soluciones ha probado antes?</p><p>Cuando tengas ese perfil claro, cada decisión de marketing se vuelve mucho más sencilla: sabes dónde aparecer, qué decir y cómo decirlo.</p><p class='article-cta'>💡 Ejercicio: describe a tu cliente ideal como si fuera una persona real con nombre y apellidos. Si no puedes, aún no lo tienes definido.</p>"
+  },
+  {
+    num: "03", icon: "🧾",
+    title: "Mezclar finanzas personales y del negocio",
+    tag: "Finanzas",
+    body: "<p>Es el error financiero número uno en pymes y autónomos españoles. Usar la misma cuenta bancaria para gastos personales y del negocio hace imposible saber si el negocio gana o pierde dinero, y complica enormemente la gestión fiscal.</p><h3>Por qué ocurre</h3><p>Al principio parece cómodo: «ya lo separo mentalmente». Pero a medida que el negocio crece, la mezcla se vuelve un caos que muchos gestores se niegan incluso a intentar ordenar.</p><h3>Las consecuencias en España</h3><ul><li>Imposibilidad de saber el beneficio real del negocio</li><li>Problemas con Hacienda: gastos personales deducidos como empresariales</li><li>Dificultad para acceder a financiación (los bancos piden cuentas separadas)</li><li>Estrés financiero constante por no saber «de quién es» el dinero</li></ul><h3>Cómo evitarlo</h3><p><strong>Esta semana:</strong> abre una cuenta corriente exclusiva para el negocio, aunque seas autónomo. Todos los ingresos del negocio entran ahí y todos los gastos del negocio salen de ahí. Tu sueldo personal es una transferencia mensual fija de esa cuenta a tu cuenta personal.</p><p>Este simple cambio transforma tu visión financiera del negocio de forma inmediata.</p><p class='article-cta'>💡 Si tienes gestor, este cambio también le facilita enormemente su trabajo y puede reducir lo que le pagas.</p>"
+  },
+  {
+    num: "04", icon: "📉",
+    title: "Cobrar demasiado poco",
+    tag: "Ventas",
+    body: "<p>España tiene una cultura de precio bajo muy arraigada, especialmente en servicios. Muchos emprendedores fijan precios basándose en el miedo («si cobro más, no me contratan») en lugar de en el valor que generan.</p><h3>Por qué ocurre</h3><p>Inseguridad sobre el propio valor, miedo al rechazo, y la creencia de que el precio bajo es una ventaja competitiva. En realidad, cobrar poco envía una señal negativa: los clientes asocian precio bajo con calidad baja.</p><h3>Las consecuencias</h3><ul><li>Trabajar muchas horas sin rentabilidad real</li><li>Atraer clientes que no valoran el trabajo y negocian cada céntimo</li><li>Imposibilidad de invertir en crecer o mejorar el negocio</li><li>Agotamiento y abandono del proyecto</li></ul><h3>Cómo corregirlo</h3><p>Haz este ejercicio: investiga qué cobran 3 competidores directos por algo similar. Luego pregúntate cuánto le cuesta al cliente NO resolver el problema que tú resuelves. Si ese coste es mayor que tu precio, estás cobrando poco.</p><p><strong>Prueba práctica:</strong> sube tu precio un 20% en la próxima propuesta. Si el 100% de los clientes acepta sin preguntar, es que aún tienes margen. El precio correcto genera algo de fricción, pero no demasiada.</p><p class='article-cta'>💡 Los clientes que solo te eligen por precio son los peores clientes que tendrás. Los buenos clientes buscan valor y resultados, no el precio más bajo.</p>"
+  },
+  {
+    num: "05", icon: "⚖️",
+    title: "Ignorar lo legal y fiscal desde el principio",
+    tag: "Legal y fiscal",
+    body: "<p>España tiene uno de los sistemas fiscales más complejos para autónomos y pymes de Europa. Ignorarlo no lo hace desaparecer: solo retrasa las consecuencias y las hace más caras.</p><h3>Los errores más frecuentes en España</h3><ul><li><strong>Operar sin darse de alta como autónomo:</strong> incluso con ingresos pequeños, la Seguridad Social puede reclamar cuotas retroactivas más sanciones.</li><li><strong>No entender el IVA:</strong> el IVA no es ingreso tuyo, es dinero de Hacienda que gestionas. Gastarlo es uno de los errores más graves.</li><li><strong>Confundir beneficio con tesorería:</strong> puedes tener mucho dinero en la cuenta y deber mucho a Hacienda al trimestre siguiente.</li><li><strong>No guardar facturas de gastos:</strong> sin factura, el gasto no es deducible. Pierdes dinero que podrías recuperar legalmente.</li></ul><h3>Cómo evitarlo</h3><p>Trabaja con un gestor desde el primer día, aunque facturesvpoco. El coste de un buen gestor (entre 50-150€/mes para autónomos) es siempre menor que el coste de un problema con Hacienda.</p><p>Si empiezas solo, investiga al menos estas tres cosas: cuándo y cómo darte de alta como autónomo, cómo funciona el modelo 130 (IRPF trimestral) y el modelo 303 (IVA trimestral).</p><p class='article-cta'>💡 La tarifa plana de autónomos (actualmente 80€/mes el primer año) es una oportunidad que muchos no aprovechan por no informarse a tiempo.</p>"
+  },
+  {
+    num: "06", icon: "🔇",
+    title: "No comunicar hasta que «esté todo listo»",
+    tag: "Marketing",
+    body: "<p>«Cuando tenga la web perfecta, empiezo a publicar.» «Cuando tenga el logo definitivo, abro redes.» «Cuando el producto esté acabado del todo, empiezo a vender.» Este perfeccionismo retrasa el negocio meses o años.</p><h3>Por qué ocurre</h3><p>El miedo al juicio ajeno y la búsqueda de perfección son muy comunes en la cultura emprendedora española. Pero el mercado no premia la perfección: premia la presencia constante y la utilidad.</p><h3>Las consecuencias</h3><ul><li>Meses sin clientes mientras se «prepara el lanzamiento»</li><li>Pérdida de aprendizaje que solo se obtiene hablando con clientes reales</li><li>Desmotivación al ver que el trabajo no genera resultados visibles</li></ul><h3>El antídoto</h3><p>Adopta la mentalidad del <strong>«bueno y ya»</strong>: una web sencilla y funcionando es infinitamente mejor que una perfecta que no existe. Un post publicado hoy genera más que diez borradores guardados.</p><p>La perfección es un estándar que tú te impones. Tus clientes valoran que estés presente, que seas útil y que respondas. El logo puede esperar; la conversación con el cliente, no.</p><p class='article-cta'>💡 Regla práctica: si algo está al 70% de lo que quieres, ya está listo para salir. El 30% restante lo aprenderás con la reacción del mercado, no trabajando en silencio.</p>"
+  },
+  {
+    num: "07", icon: "🏝️",
+    title: "Emprender en soledad sin red de apoyo",
+    tag: "Mentalidad",
+    body: "<p>El emprendedor solitario es uno de los perfiles más comunes en España, y también uno de los más vulnerables. Sin una red de apoyo, cada problema parece único, insalvable y agotador.</p><h3>Por qué ocurre</h3><p>En España, el emprendimiento todavía no tiene el ecosistema de comunidad que existe en otros países. Además, muchos emprendedores sienten vergüenza de mostrar sus dificultades, lo que los lleva a aislarse más.</p><h3>Las consecuencias</h3><ul><li>Decisiones tomadas sin perspectiva externa que las cuestione</li><li>Mayor probabilidad de abandono ante los primeros obstáculos serios</li><li>Agotamiento mental por cargar con todo sin con quién compartirlo</li><li>Errores que otros ya han cometido y de los que podrías aprender</li></ul><h3>Cómo construir tu red</h3><p>No hace falta un mentor famoso ni un inversor. Empieza por lo más accesible:</p><ul><li>Busca 2-3 emprendedores en una etapa similar a la tuya y quedaos una vez al mes</li><li>Únete a comunidades online de tu sector (LinkedIn, grupos de Facebook, Slack)</li><li>Asiste a eventos locales de emprendimiento aunque solo sea para escuchar</li></ul><p>El objetivo no es hacer networking transaccional: es tener personas que entiendan tus retos porque los están viviendo también.</p><p class='article-cta'>💡 En España existen redes como AJE (Asociación de Jóvenes Empresarios) y los Viveros de Empresas municipales que ofrecen mentoring gratuito o de bajo coste.</p>"
+  },
+  {
+    num: "08", icon: "📋",
+    title: "No documentar procesos hasta que es demasiado tarde",
+    tag: "Operaciones",
+    body: "<p>Mientras el negocio es pequeño, tener todo en la cabeza funciona. Pero en el momento en que quieres delegar, escalar o simplemente tomarte unos días de descanso, te das cuenta del problema: el negocio no puede funcionar sin ti.</p><h3>Por qué ocurre</h3><p>Documentar parece una tarea burocrática que «ya haré cuando tenga tiempo». Ese momento nunca llega porque siempre hay algo más urgente. Hasta que hay una crisis.</p><h3>Las consecuencias</h3><ul><li>Imposibilidad de delegar: nadie más sabe hacer lo que tú haces</li><li>Cada nueva incorporación requiere que tú estés presente para enseñar</li><li>Si enfermas o te vas de vacaciones, el negocio se para</li><li>Dificultad para vender el negocio en el futuro (un comprador quiere sistemas, no personas indispensables)</li></ul><h3>Por dónde empezar</h3><p>No hace falta documentar todo a la vez. Empieza por el proceso que más repites: el que haría más daño si falla o si tienes que delegarlo de urgencia. Escríbelo en una página. Luego el siguiente.</p><p>En 10 semanas, documentando un proceso por semana, tendrás el 80% de tu negocio sistematizado.</p><p class='article-cta'>💡 Una grabación de pantalla de 10 minutos mientras haces una tarea vale más que un manual de 20 páginas que nadie lee.</p>"
+  },
+  {
+    num: "09", icon: "🔁",
+    title: "Rendirse justo antes del punto de inflexión",
+    tag: "Mentalidad",
+    body: "<p>Muchos negocios que habrían tenido éxito se abandonan en el peor momento posible: justo cuando estaban a punto de despegar. La curva de aprendizaje de un negocio nuevo es dura, y confundirla con el fracaso es el error más caro.</p><h3>El patrón típico en España</h3><p>Los primeros 6-18 meses de un negocio nuevo son los más difíciles. Los ingresos son bajos, el mercado no te conoce todavía, y la incertidumbre es máxima. Es en este período cuando la mayoría abandona, justo cuando la inversión en aprendizaje estaba a punto de dar sus frutos.</p><h3>Cómo distinguir «curva normal» de «esto no funciona»</h3><ul><li><strong>Señal de que vas por buen camino:</strong> tienes algunos clientes satisfechos, recibes feedback positivo aunque las ventas sean bajas, cada mes sabes algo que no sabías el anterior.</li><li><strong>Señal de que algo debe cambiar:</strong> llevas 12 meses sin un solo cliente de pago, el feedback es consistentemente negativo, o el mercado que elegiste no existe.</li></ul><h3>La regla de los 18 meses</h3><p>No evalúes si tu negocio «funciona o no» antes de los 18 meses de trabajo real y constante. Lo que sí debes hacer durante ese tiempo es iterar: cambiar lo que no funciona, reforzar lo que sí, y seguir aprendiendo.</p><p class='article-cta'>💡 Si estás pensando en abandonar, hazte esta pregunta: ¿estoy tomando esta decisión desde el cansancio o desde los datos? Las dos cosas son muy diferentes.</p>"
+  }
+];
+
+function openMistake(idx) {
+  var m = MISTAKES[idx];
+  if (!m) return;
+  var el = document.getElementById("mistake-content");
+  el.innerHTML =
+    '<span class="art-tag" style="background:#fde8d8;color:#e05555">' + m.tag + '</span>' +
+    '<div class="art-meta"><span>' + m.num + ' · ' + m.icon + '</span></div>' +
+    '<h2>' + m.title + '</h2>' +
+    m.body;
+  var mm = document.getElementById("mistake-modal");
+  mm.classList.add("open");
+}
+
+function closeMistake() {
+  document.getElementById("mistake-modal").classList.remove("open");
+}
+
+// ── ARTICLES ───────────────────────────────────────────────
+var ARTICLES = [
+  {
+    tag: "Finanzas", tagClass: "orange",
+    title: "5 métricas financieras que todo emprendedor debe conocer",
+    meta: "Lectura 4 min · Finanzas básicas",
+    body: "<p>Muchos emprendedores llevan su negocio sin mirar los números, confiando en la intuición. Funciona al principio, pero tiene un techo. Estas 5 métricas te darán visión real de la salud de tu negocio en cualquier momento.</p><h3>1. Punto de equilibrio mensual</h3><p>¿Cuánto necesitas vender cada mes para no perder dinero? Suma todos tus gastos fijos y divídelos entre el precio promedio de tu producto o servicio. Ese número es tu meta mínima mensual.</p><h3>2. Margen de beneficio neto</h3><p>No es lo mismo facturar mucho que ganar mucho. El margen neto te dice qué porcentaje de cada euro que entra se convierte en beneficio real. <strong>Fórmula:</strong> (Beneficio neto / Ingresos totales) × 100.</p><h3>3. Flujo de caja mensual</h3><p>¿Cuánto dinero real entró y salió de tu cuenta este mes? No lo que facturaste, sino lo que realmente cobrastes. Muchos negocios rentables quiebran por falta de liquidez.</p><h3>4. Coste de adquisición de cliente (CAC)</h3><p>¿Cuánto te cuesta conseguir un nuevo cliente? Divide lo que gastas en marketing y ventas entre el número de clientes nuevos obtenidos. Si tu CAC es mayor que lo que te paga ese cliente, tienes un problema.</p><h3>5. Valor de vida del cliente (LTV)</h3><p>¿Cuánto dinero te genera un cliente durante toda su relación contigo? Compara este número con tu CAC: si el LTV es al menos 3 veces mayor que el CAC, tu negocio tiene buena salud.</p><p class='article-cta'>💡 Empieza esta semana: calcula solo el punto de equilibrio. Con ese número claro, todas las demás decisiones se vuelven más fáciles.</p>"
+  },
+  {
+    tag: "Marketing", tagClass: "",
+    title: "Cómo construir una propuesta de valor en una frase",
+    meta: "Lectura 3 min · Branding",
+    body: "<p>La propuesta de valor es la respuesta a la pregunta que se hace tu cliente en los primeros 5 segundos: <em>\"¿Por qué debería elegirte a ti?\"</em> Si no tienes una respuesta clara, concisa y diferente, ya lo has perdido.</p><h3>La fórmula que funciona</h3><p>Completa esta frase: <strong>\"Ayudo a [tipo de cliente] a [resultado que obtienes] sin [obstáculo o dolor que evitas].\"</strong></p><p>Ejemplo real: <em>\"Ayudo a emprendedores principiantes a llevar su contabilidad sin necesitar conocimientos de finanzas.\"</em></p><h3>Los 3 errores más comunes</h3><ul><li><strong>Ser demasiado genérico:</strong> \"Ofrezco servicios de calidad\" no dice nada. Todos dicen lo mismo.</li><li><strong>Hablar del proceso, no del resultado:</strong> Tu cliente no compra lo que haces, compra lo que consigue gracias a lo que haces.</li><li><strong>Intentar hablarle a todos:</strong> Cuanto más específico es tu cliente ideal, más poderosa es tu propuesta.</li></ul><h3>Cómo saber si funciona</h3><p>Muéstrasela a alguien que no te conoce. Si en 10 segundos no entiende qué haces y para quién, reescríbela. La claridad siempre supera a la creatividad.</p><p class='article-cta'>💡 Ejercicio: escribe 3 versiones de tu propuesta de valor hoy y compártelas con alguien de confianza. Quédate con la que genere más curiosidad.</p>"
+  },
+  {
+    tag: "Ventas", tagClass: "orange",
+    title: "El guión de ventas que no suena a guión",
+    meta: "Lectura 5 min · Técnicas comerciales",
+    body: "<p>Los mejores vendedores no siguen un guión rígido: tienen una conversación estructurada que parece completamente natural. La diferencia está en dominar las preguntas correctas, no en memorizar frases.</p><h3>La estructura de 4 pasos</h3><p><strong>1. Conectar antes de vender.</strong> Empieza preguntando por la situación actual del cliente, sin intentar vender nada todavía. La gente compra a quien la entiende, no a quien la convence.</p><p><strong>2. Descubrir el problema real.</strong> Pregunta: <em>\"¿Cuál es el mayor reto que tienes ahora mismo con [área relacionada]?\"</em> Escucha más de lo que hablas. El cliente te está diciendo exactamente cómo venderle.</p><p><strong>3. Amplificar el coste del problema.</strong> Antes de presentar tu solución, pregunta: <em>\"¿Qué pasa si esto no se resuelve en los próximos 3 meses?\"</em> Cuando el cliente articula el coste del problema, el precio de tu solución se vuelve pequeño.</p><p><strong>4. Presentar como solución, no como producto.</strong> No digas lo que haces. Di cómo lo que haces resuelve exactamente lo que el cliente te acaba de contar.</p><h3>La frase que más ventas cierra</h3><p>Al final de la conversación, en lugar de preguntar \"¿lo comprás?\", pregunta: <em>\"¿Tiene sentido para ti empezar por aquí?\"</em> Es menos agresivo, más colaborativo, y convierte mucho mejor.</p><p class='article-cta'>💡 Esta semana: en tu próxima conversación de ventas, escucha sin interrumpir durante los primeros 3 minutos. Solo haz preguntas. Notarás la diferencia.</p>"
+  },
+  {
+    tag: "Operaciones", tagClass: "",
+    title: "Automatiza tu negocio con herramientas gratuitas",
+    meta: "Lectura 6 min · Productividad",
+    body: "<p>Automatizar no es solo para grandes empresas. Con las herramientas correctas, puedes recuperar entre 5 y 10 horas a la semana sin gastar un euro. El truco está en automatizar primero lo que más se repite.</p><h3>Herramientas gratuitas por categoría</h3><h3>📅 Agenda y citas</h3><p><strong>Calendly (gratis):</strong> Deja que los clientes reserven citas en tu calendario sin el ir y venir de emails. Conecta con Google Calendar o Outlook. Ahorra entre 20-30 minutos por cita.</p><h3>💸 Facturación</h3><p><strong>Wave (gratis):</strong> Crea facturas profesionales, hace seguimiento de pagos y lleva tu contabilidad básica. Perfecto para freelancers y negocios pequeños.</p><h3>📧 Email y seguimiento</h3><p><strong>Mailchimp (gratis hasta 500 contactos):</strong> Automatiza emails de bienvenida, seguimiento post-venta y newsletters. Una vez configurado, trabaja solo.</p><h3>🔗 Conectar apps</h3><p><strong>Zapier (gratis, 100 tareas/mes):</strong> Conecta tus aplicaciones entre sí. Ejemplo: cuando alguien rellena un formulario, automáticamente se añade a tu lista de email y recibes una notificación en WhatsApp.</p><h3>✅ Gestión de tareas</h3><p><strong>Trello o Notion (gratis):</strong> Organiza proyectos, tareas y procesos en un solo lugar. Especialmente útil cuando empiezas a delegar.</p><h3>Por dónde empezar</h3><p>Elige UNA sola herramienta esta semana, la que resuelva tu mayor pérdida de tiempo. Másterala antes de añadir otra. La trampa de las herramientas es empezar demasiadas a la vez.</p><p class='article-cta'>💡 Reto: identifica la tarea que más veces repites esta semana. Hay una probabilidad alta de que pueda automatizarse con alguna de estas herramientas.</p>"
+  },
+  {
+    tag: "Personas", tagClass: "orange",
+    title: "Tu primer contrato: qué hacer antes de contratar a alguien",
+    meta: "Lectura 4 min · RRHH básico",
+    body: "<p>Contratar a tu primera persona es uno de los momentos más emocionantes y arriesgados del emprendimiento. Una mala contratación puede costarte 3 meses de trabajo perdido y mucho estrés. Estas son las claves para hacerlo bien desde el principio.</p><h3>Antes de publicar ninguna oferta</h3><p>Responde estas 4 preguntas por escrito:</p><ul><li><strong>¿Qué problema concreto resuelve esta persona?</strong> No contrates un perfil genérico, contrata para resolver un problema específico.</li><li><strong>¿Qué habrá entregado en sus primeros 90 días?</strong> Si no puedes responder esto, aún no estás listo para contratar.</li><li><strong>¿Qué 3 habilidades son absolutamente no-negociables?</strong> Sé específico. \"Proactivo y organizado\" no es una habilidad medible.</li><li><strong>¿Qué tipo de personalidad encaja con tu forma de trabajar?</strong> Las habilidades se pueden enseñar; la actitud y los valores, mucho menos.</li></ul><h3>La entrevista que revela más</h3><p>En lugar de preguntar \"¿cuáles son tus puntos fuertes?\", pregunta: <em>\"Cuéntame de un proyecto en el que las cosas no salieron como esperabas. ¿Qué hiciste?\"</em> La respuesta te dice más sobre cómo trabaja alguien que cualquier CV.</p><h3>El periodo de prueba lo cambia todo</h3><p>Define claramente qué esperas al final del periodo de prueba. Un objetivo concreto, medible, acordado desde el primer día. Así tanto tú como la persona sabéis exactamente a qué ateneros.</p><p class='article-cta'>💡 Antes de tu próxima contratación, escribe la descripción del puesto respondiendo las 4 preguntas anteriores. Ese documento te ahorrará semanas de proceso.</p>"
+  },
+  {
+    tag: "Marketing", tagClass: "",
+    title: "Redes sociales para negocios: empezar bien desde el principio",
+    meta: "Lectura 5 min · Redes sociales",
+    body: "<p>El mayor error que cometen los emprendedores en redes sociales es intentar estar en todas a la vez. El resultado: presencia mediocre en todas partes, sin resultados en ninguna. La estrategia ganadora es la opuesta.</p><h3>Cómo elegir tu red principal</h3><p>La pregunta no es \"¿cuál red es mejor?\", sino <em>\"¿dónde está concentrado mi cliente ideal?\"</em></p><ul><li><strong>Instagram:</strong> Ideal para negocios visuales, productos físicos, lifestyle, alimentación, moda, belleza.</li><li><strong>LinkedIn:</strong> Perfecto para servicios B2B, consultoría, formación profesional, tecnología.</li><li><strong>TikTok:</strong> Audiencias jóvenes, productos de consumo, educación entretenida, tendencias.</li><li><strong>Facebook:</strong> Comunidades locales, grupos de nicho, audiencias de 35+ años.</li></ul><h3>Qué publicar (y qué no)</h3><p>El contenido que funciona en redes de negocio sigue esta proporción: <strong>70% valor, 20% personalidad, 10% venta.</strong> Si publicas más del 10% de contenido de venta directa, la audiencia desaparece.</p><h3>La frecuencia que funciona</h3><p>Publicar 3 veces por semana de forma constante durante 90 días supera a publicar todos los días durante 2 semanas y luego desaparecer. El algoritmo premia la consistencia, y tu audiencia también.</p><h3>La métrica que importa de verdad</h3><p>No te obsesiones con los seguidores. La métrica que importa es cuántas personas te contactan o preguntan por tus servicios. Puedes tener 500 seguidores y un negocio rentable si son los 500 correctos.</p><p class='article-cta'>💡 Esta semana: elige UNA red social, publica 3 veces con contenido útil para tu cliente, y mide cuántos mensajes recibes. Ese es tu punto de partida real.</p>"
+  }
+];
+
+function openArticle(idx) {
+  var art = ARTICLES[idx];
+  if (!art) return;
+  var el = document.getElementById("article-content");
+  el.innerHTML =
+    '<span class="art-tag ' + art.tagClass + '">' + art.tag + '</span>' +
+    '<div class="art-meta">' +
+    '<span>' + art.meta + '</span>' +
+    '</div>' +
+    '<h2>' + art.title + '</h2>' +
+    art.body;
+  var artModal = document.getElementById("article-modal");
+  artModal.classList.add("open");
+  artModal.scrollTop = 0;
+  el.scrollTop = 0;
+}
+
+function closeArticle() {
+  document.getElementById("article-modal").classList.remove("open");
+}
+
 // ── INIT ───────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", function() {
   modal        = document.getElementById("modal");
@@ -439,4 +783,39 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   document.getElementById("btn-send").addEventListener("click", handleSend);
   chatInput.addEventListener("keydown", function(e) { if (e.key === "Enter") handleSend(); });
+
+  // Feed article cards
+  document.querySelectorAll(".feed-card[data-article]").forEach(function(card) {
+    card.addEventListener("click", function() {
+      openArticle(parseInt(card.dataset.article, 10));
+    });
+    card.addEventListener("keydown", function(e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openArticle(parseInt(card.dataset.article, 10)); }
+    });
+  });
+
+  // Article modal close
+  document.getElementById("article-close").addEventListener("click", closeArticle);
+  document.getElementById("article-modal").addEventListener("click", function(e) {
+    if (e.target === document.getElementById("article-modal")) closeArticle();
+  });
+
+  // Mistake cards
+  document.querySelectorAll(".mistake-card[data-mistake]").forEach(function(card) {
+    card.addEventListener("click", function() {
+      openMistake(parseInt(card.dataset.mistake, 10));
+    });
+    card.addEventListener("keydown", function(e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openMistake(parseInt(card.dataset.mistake, 10)); }
+    });
+  });
+
+  // Mistake modal close
+  document.getElementById("mistake-close").addEventListener("click", closeMistake);
+  document.getElementById("mistake-modal").addEventListener("click", function(e) {
+    if (e.target === document.getElementById("mistake-modal")) closeMistake();
+  });
+
+  // Resources hub
+  initResources();
 });
